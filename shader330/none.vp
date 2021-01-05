@@ -1,0 +1,20 @@
+#version 330 core
+
+layout(location = 0) in vec3 vertexPosition;
+uniform vec3 attrib_Color;
+
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 proj;
+
+
+out vec3 attrib_Fragment_Color;
+
+void main(){
+  attrib_Fragment_Color = attrib_Color;
+  //gl_Position.xyz = vertexPosition;
+  //gl_Position.w = 1.0;
+  gl_Position = proj * view * model * vec4(vertexPosition, 1.0);
+
+}
